@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg mainNav ">
+  <div class="container-fluid d-flex flex-column align-items-center">
+    <a class="navbar-brand p-0" href="/showers">
+      <img src="/logo/logo.png" width="300" class="d-inline-block align-text-top p-0">
+    </a>
+  
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ">
+        <% if (!admin) { %>
+        <li class="nav-item"><a class="nav-link" href="/admin/login">התחברות</a></li>
+        <% } if (admin) { %>
+        <li class="nav-item"><a class="nav-link" href="/showers/upload">העלאה</a></li>
+        <li class="nav-item"><a class="nav-link" href="/admin/logout">התנתקות</a></li>   
+        <% } %>     
+      </ul>
+    </div>
+  </div>
+</nav>

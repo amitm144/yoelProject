@@ -1,0 +1,65 @@
+body {
+    background: #fdfdfd;
+
+}
+
+h3 {
+    color: rgb(12, 43, 70);
+}
+
+.mainNav {
+    background: #fdfdfd;
+    box-shadow: 0 2px 2px 0 rgba(12, 43, 70, 0.2);
+}
+
+.featuresNav {
+    background: #fdfdfd;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px 0 rgba(12, 43, 70, 0.2), 0 3px 10px 0 rgba(12, 43, 70, 0.2);
+
+}
+
+nav.navbar.navCollapse {
+    background: transparent;
+}
+
+.featureContainer {
+    border: 0.5px solid rgba(12, 43, 70, 0.5);
+    /* Yellow border when selected */
+    border-radius: 3%;
+}
+
+.btn-group-vertical .btn-check:checked+.btn {
+    background-color: rgba(58, 117, 169, 0.9);
+    color: white;
+    border: 2px solid transparent;
+}
+
+.btn-group-vertical .btn-check {
+    display: none;
+    /* Hide the default radio button */
+}
+
+.successBT {
+    background-color: rgba(58, 117, 169 , 1)  ;
+    color: white
+}
+.successBT:hover {
+    background-color:rgba(12, 43, 70, 0.9);
+    color: white
+}
+.dangerBT {
+    background-color: rgba(235,95,72,0.9);
+    color: white
+}
+.dangerBT:hover {
+    background-color: rgba(189, 42, 20, 1);
+    color: white
+}
+.btnGroup1{
+    border-radius: 0px 10px 10px 0px;
+}
+.btnGroup2{
+    border-radius: 10px 0px 0px 10px;
+}

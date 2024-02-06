@@ -1,0 +1,45 @@
+<ul class="pagination justify-content-center "
+>
+    <% if (currentPage > 3) { %>
+        <li class="page-item">
+            <button class="page-link" type="submit" name="page" value="1">
+                <i class="bi bi-chevron-double-right"></i>
+            </button>
+        </li>
+    <% } %>
+
+    <% if (currentPage > 1) { %>
+        <li class="page-item">
+            <button class="page-link" type="submit" name="page" value="<%=  parseInt(currentPage,10) - 1 %>">
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </li>
+    <% } %>
+
+    <% for (let offset = -2; offset <= 2; offset++) { %>
+        <% const pageNum = parseInt(currentPage,10) + offset; %>
+        <% if (pageNum >= 1 && pageNum <= totalPages) { %>
+            <li class="page-item <%= pageNum == currentPage ? 'active' : '' %>">
+                <button class="page-link" type="submit" name="page" value="<%= pageNum %>">
+                    <%= pageNum %>
+                </button>
+            </li>
+        <% } %>
+    <% } %>
+
+    <% if (currentPage < totalPages) { %>
+        <li class="page-item">
+            <button class="page-link" type="submit" name="page" value="<%=  parseInt(currentPage,10) + 1 %>">
+                <i class="bi bi-chevron-left"></i>
+            </button>
+        </li>
+    <% } %>
+
+    <% if (currentPage < totalPages - 2) { %>
+        <li class="page-item">
+            <button class="page-link" type="submit" name="page" value="<%= totalPages %>">
+                <i class="bi bi-chevron-double-left"></i>
+            </button>
+        </li>
+    <% } %>
+</ul>

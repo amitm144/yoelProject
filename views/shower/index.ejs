@@ -1,0 +1,84 @@
+<%- layout('/layouts/boilerplate') %>
+
+
+
+
+    <form action="/showers" method="POST">
+        <div class="collapse" id="navbarToggleExternalContent" data-bs-theme="light">
+            <div class="container p-4 featuresNav">
+
+                <div class="row mb-5">
+                    <%- include('../partials/features', { showers, features, translationMap, selectedFeatures , type})%>
+
+                        <div class="featureContainer col-md-4 col-sm-6 pt-5 pb-4 ">
+                            <h3 class="mb-3 text-center fw-bold ">
+                                <%= translationMap['illustration'] %>
+                            </h3>
+                            <div class="text-center" id="illustrationContainer"></div>
+                        </div>
+                </div>
+
+                <div class="row text-center">
+                    <div class="col">
+                        <button class="btn successBT" type="submit">חיפוש</button>
+                        <label class="btn dangerBT" onclick="resetForm()">נקה</label>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <nav class="navbar navCollapse ">
+            <div class="container-fluid">
+                <button class="navbar-toggler m-auto" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <i id="collapseIcon" class="bi bi-chevron-compact-down"></i>
+                </button>
+            </div>
+        </nav>
+
+
+    </form>
+
+    <form action="/showers" method="POST">
+        <div class="container p-2 ">
+            <%- include('../partials/pagination', { currentPage, totalPages, selectedFeatures}) %>
+        </div>
+    </form>
+
+    <div class="container p-2 mb-5">
+        <%- include('../partials/showerList', { showers }) %>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            const illustrationContainer = document.getElementById('illustrationContainer');
+
+            radioButtons.forEach(function (radio) {
+                radio.addEventListener('click', function () {
+                    // Clear previous content
+                    illustrationContainer.innerHTML = '';
+
+                    // Concatenate the values of type and subType
+                    const type = document.querySelector('input[name="selectedFeatures[type]"]:checked').value;
+                    const subType = document.querySelector('input[name="selectedFeatures[subType]"]:checked').value;
+                    const concatenatedValue = type + subType;
+                    const gifSrc = `/videos/${concatenatedValue}.gif`
+
+                    // Add the concatenated value to the illustrationContainer
+                    const imgElement = document.createElement('img');
+                    imgElement.src = gifSrc;
+                    imgElement.alt = concatenatedValue;
+
+                    // Apply styling to resize the image to 60vw
+                    imgElement.style.width = '60%';
+                    imgElement.style.height = 'auto';
+
+                    illustrationContainer.appendChild(imgElement);
+                });
+            });
+        });
+    </script>

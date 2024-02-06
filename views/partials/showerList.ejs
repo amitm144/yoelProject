@@ -1,0 +1,47 @@
+<div class="row justify-content-center mb-5" ">
+    <% for (let shower of showers) { %>
+        <div class="col-12 col-md-4 col-sm-6 mb-2">
+            <!-- Shower image carousel -->
+            <div id="shower<%= shower._id %>" class="carousel slide ">
+                <div class="carousel-inner">
+                    <% for (let [index, image] of shower.images.entries()) { %>
+                        <div class="carousel-item <%= index === 0 ? 'active' : '' %>" style=" height: 60vh">
+                            <img src="<%= image.url %>"
+                                style="width: 100%; height: 100%; object-fit: cover; display: block;"
+                                class="clickable-image rounded border border-dark-subtle"
+                                data-image-src="<%= image.url %>" data-shower-id="<%= shower._id %>" />
+                        </div>
+                        <% } %>
+                </div>
+                <!-- Carousel controls -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#shower<%= shower._id %>"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#shower<%= shower._id %>"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    </span>
+                </button>
+            </div>
+
+            <% if (admin) { %>
+                <!-- Admin actions -->
+
+
+                <div class="d-flex flex-row justify-content-center mt-1 mb-3 ">
+
+                    <form class="col" action="/showers/edit/<%= shower._id %>">
+                        <button class="bi bi-pencil-square btn successBT btnGroup1 w-100"><%= translationMap['edit'] %></button>
+                    </form>
+
+                    <form class="col" action="/showers/delete/<%= shower._id %>?_method=DELETE" method="POST"
+                        onsubmit="return submitForm(this);">
+                        <button class="bi bi-trash3 btn dangerBT btnGroup2 w-100"><%= translationMap['delete'] %></button>
+                    </form>
+                </div>
+                <% } %>
+        </div>
+        <% } %>
+</div>
+

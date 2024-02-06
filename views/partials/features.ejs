@@ -1,0 +1,21 @@
+<% for (const key in features) { %>
+    <div class="featureContainer col-md-4 col-sm-6 pt-5 pb-4">
+        <h3 class="mb-3 text-center fw-bold"><%= translationMap[key] %></h3>
+        <div class="btn-group-vertical w-100" role="group" aria-label="<%= key %> radio toggle button group">
+            <% for (const feature of features[key]) { %>
+                <input 
+                    type="radio" 
+                    class="btn-check" 
+                    id="<%= key + feature %>"
+                    value="<%= feature %>" 
+                    
+                    <% if (type === 'index')    { %> name="selectedFeatures[<%= key %>]" <% if (selectedFeatures && selectedFeatures[key]===feature) { %> checked <% } %> <% } %>
+                    <% if (type === 'edit' )    { %> name="shower[<%= key %>]"           <% if (shower[key]===feature) { %> checked required <% } %> <% } %>
+                    <% if (type === 'upload')   { %> name="shower[<%= key %>]"              required <% } %>
+                >
+                <label class="btn rounded-2 mb-1 text" for="<%= key + feature %>"><%= translationMap[feature] %></label>
+            <% } %>
+        </div>
+    </div>
+<% } %>
+

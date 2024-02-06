@@ -1,0 +1,6 @@
+{
+    "workbench.tree.enableStickyScroll": true,
+    "editor.stickyScroll.defaultModel": "indentationModel",
+    "editor.stickyScroll.enabled": true,
+    "terminal.integrated.stickyScroll.enabled": true
+}

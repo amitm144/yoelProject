@@ -1,0 +1,62 @@
+<%- layout('/layouts/boilerplate') %>
+
+<div class="card my-5 p-5">
+    <div class="row d-flex justify-content-between row align-items-center">
+        <div class="col-md-6">
+            <div class="card-body">
+                <h3>Register</h3>
+                <form action="/admin/registeradmin" method="POST" class="mt-4 validated-form" novalidate>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" placeholder required>
+                        <label for="email">אי-מייל</label>
+                        <div class="invalid-feedback">
+                            בבקשה תספק אימייל תקין
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="username" name="username" placeholder required>
+                        <label for="username">שם משתמש</label>
+                        <div class="invalid-feedback">
+                            שם משתמש לא יכול להשאר ריק
+                        </div>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="password" name="password" placeholder
+                            required>
+                        <label for="password">סיסמא</label>
+                        <div class="invalid-feedback">
+                            סיסמא לא יכולה להשאר ריקה
+                        </div>
+                    </div>
+                   
+
+                    <button class="btn btn-outline-primary mt-3">הרשם</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6 text-center">
+            <img src="/logo/login.jpg" class="w-100 rounded border border-dark-subtle">
+        </div>
+    </div>
+</div>
+
+<script>
+    (() => {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        const forms = document.querySelectorAll('.validated-form')
+
+        // Loop over them and prevent submission
+        Array.from(forms).forEach(form => {
+            form.addEventListener('submit', event => {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+
+                form.classList.add('was-validated')
+            }, false)
+        })
+    })()
+</script>

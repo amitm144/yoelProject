@@ -1,0 +1,52 @@
+<%- layout('/layouts/boilerplate') %>
+
+    <form action="/showers/upload" method="POST" enctype="multipart/form-data">
+        <div class="row my-5">
+
+            <div class="mb-2 ">
+                <label for="formFileMultiple" class="form-label">בחר תמונות להעלאה</label>
+                <input id="uploadFiles" class="form-control form-control-lg " type="file" id="formFileMultiple" name="image" multiple>
+            </div>
+            <div id="previewContainer" class="row justify-content-center mb-2">
+                <!-- Previews will be added here dynamically -->
+            </div>
+
+            <div class="row mb-2">
+                <%- include('../partials/features', { features, translationMap , type }) %>
+
+            </div>
+
+
+        </div>
+        <div class="row mb-5">
+            <button class="btn successBT" type="submit">העלאה</button>
+        </div>
+    </form>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const fileInput = document.getElementById('uploadFiles');
+            const previewContainer = document.getElementById('previewContainer');
+
+            fileInput.addEventListener('change', function () {
+                previewContainer.innerHTML = ''; // Clear existing previews
+
+                for (const file of fileInput.files) {
+                    const previewWrapper = document.createElement('div');
+                    previewWrapper.classList.add('col-12', 'col-sm-6', 'col-lg-3', 'mb-2');
+
+                    const preview = document.createElement('img');
+                    preview.style.objectFit = 'cover';
+                    preview.style.objectPosition = 'center';
+                    preview.style.width = '100%';
+
+                    const objectURL = URL.createObjectURL(file);
+                    preview.src = objectURL;
+                    preview.alt = 'Preview Image';
+
+                    previewWrapper.appendChild(preview);
+                    previewContainer.appendChild(previewWrapper);
+                }
+            });
+        });
+    </script>
