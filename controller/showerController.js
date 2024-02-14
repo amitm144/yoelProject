@@ -3,8 +3,6 @@ const { features, translationMap, transformations, applyTransformations } = requ
 
 // Display a list of showers based on selected features
 module.exports.index = async (req, res) => {
-    console.log("req.body - " + JSON.stringify( req.body.page));
-    console.log("req.query.page - " + JSON.stringify( req.query.page));
     const selectedFeatures  = req.body.selectedFeatures;
     const currentPage =  req.body.page || 1;
 

@@ -70,7 +70,7 @@ app.use( (req, res, next) => {
 
 
 
-app.use('/showers' , showerRouter)
+app.use('/' , showerRouter)
 app.use('/admin' , adminRouter)
 
 
@@ -85,7 +85,7 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(3000, () => {
-    console.log('Serving on port 3000')
+app.listen(80, () => {
+    console.log('Serving on port 80')
 })
 

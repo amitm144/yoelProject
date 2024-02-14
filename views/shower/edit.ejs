@@ -1,8 +1,8 @@
 <%- layout('/layouts/boilerplate') %>
 
     <div class="container-fluid p-4">
-        <a class="btn btn-light" href="/showers">חזור</a>
-        <form action="/showers/edit/<%= shower._id %>?_method=PUT" method="POST">
+        <a class="btn btn-light" href="/">חזור</a>
+        <form action="/edit/<%= shower._id %>?_method=PUT" method="POST">
 
             <div class="row justify-content-center mt-2">
                 <% for (const img of shower.images) { %>
